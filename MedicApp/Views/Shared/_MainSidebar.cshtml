@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+
  <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -48,15 +49,15 @@
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Starter Pages
+                            Paginas Admin
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="@Url.Action("ViewDoctores","Doctores")" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Active Page</p>
+                                <p>Listado de Doctores</p>
                             </a>
                         </li>
                         <li class="nav-item">
