@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MedicApp.Medico>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Especialidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paciente_actual)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_role)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hora_entrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hora_salida)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Especialidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paciente_actual)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_role)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora_entrada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora_salida)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
