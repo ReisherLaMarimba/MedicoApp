@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -48,11 +49,21 @@ namespace MedicApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nombre,Apellido,Especialidad,Paciente_actual,Id_role,hora_entrada,hora_salida")] Medico medico)
         {
-            if (ModelState.IsValid)
+         
+            try
             {
-                db.Medicos.Add(medico);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Medicos.Add(medico);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+            }
+            catch (DbEntityValidationException e)
+            {
+              
+              
             }
 
             return View(medico);
