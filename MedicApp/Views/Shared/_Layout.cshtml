@@ -9,26 +9,20 @@
   <link rel="stylesheet" href="~/Content/Plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
     <link rel="stylesheet" href="~/Content/dist/css/adminlte.min.css">
-    <link rel="stylesheet" type="text/css" href="/jquery.datetimepicker.css"/ >
+    <link rel="stylesheet" type="text/css" href="/jquery.datetimepicker.css" >
    
 
 </head>
 <body>
     @Html.Partial("_Nav")
     @Html.Partial("_MainSidebar")
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-
-
-        </div>
-    </div>
+    @Html.Partial("_SideControl")
 
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        @Html.Partial("_Footer")
+       
     </div>
 
     @Scripts.Render("~/bundles/jquery")
