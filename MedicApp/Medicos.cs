@@ -12,15 +12,15 @@ namespace MedicApp
     using System;
     using System.Collections.Generic;
     
-    public partial class Medico
+    public partial class Medicos
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Especialidad { get; set; }
         public string Paciente_actual { get; set; }
-        public Nullable<int> Id_role { get; set; }
-        public Nullable<System.DateTime> hora_entrada { get; set; }
-        public Nullable<System.DateTime> hora_salida { get; set; }
+        public int id_role { get; set; }
+        public System.DateTime hora_entrada { get; set; }
+        public System.DateTime hora_salida { get; set; }
     }
 }

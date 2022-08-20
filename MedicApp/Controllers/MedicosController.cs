@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -13,7 +12,7 @@ namespace MedicApp.Controllers
 {
     public class MedicosController : Controller
     {
-        private medicoDbEntities1 db = new medicoDbEntities1();
+        private MedicodbEntities db = new MedicodbEntities();
 
         // GET: Medicos
         public ActionResult Index()
@@ -28,12 +27,12 @@ namespace MedicApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Medico medico = db.Medicos.Find(id);
-            if (medico == null)
+            Medicos medicos = db.Medicos.Find(id);
+            if (medicos == null)
             {
                 return HttpNotFound();
             }
-            return View(medico);
+            return View(medicos);
         }
 
         // GET: Medicos/Create
@@ -47,26 +46,16 @@ namespace MedicApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Apellido,Especialidad,Paciente_actual,Id_role,hora_entrada,hora_salida")] Medico medico)
+        public ActionResult Create([Bind(Include = "Id,Nombre,Apellido,Especialidad,Paciente_actual,id_role,hora_entrada,hora_salida")] Medicos medicos)
         {
-         
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    db.Medicos.Add(medico);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-
-            }
-            catch (DbEntityValidationException e)
-            {
-              
-              
+                db.Medicos.Add(medicos);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
-            return View(medico);
+            return View(medicos);
         }
 
         // GET: Medicos/Edit/5
@@ -76,12 +65,12 @@ namespace MedicApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Medico medico = db.Medicos.Find(id);
-            if (medico == null)
+            Medicos medicos = db.Medicos.Find(id);
+            if (medicos == null)
             {
                 return HttpNotFound();
             }
-            return View(medico);
+            return View(medicos);
         }
 
         // POST: Medicos/Edit/5
@@ -89,15 +78,15 @@ namespace MedicApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Apellido,Especialidad,Paciente_actual,Id_role,hora_entrada,hora_salida")] Medico medico)
+        public ActionResult Edit([Bind(Include = "Id,Nombre,Apellido,Especialidad,Paciente_actual,id_role,hora_entrada,hora_salida")] Medicos medicos)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(medico).State = EntityState.Modified;
+                db.Entry(medicos).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(medico);
+            return View(medicos);
         }
 
         // GET: Medicos/Delete/5
@@ -107,12 +96,12 @@ namespace MedicApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Medico medico = db.Medicos.Find(id);
-            if (medico == null)
+            Medicos medicos = db.Medicos.Find(id);
+            if (medicos == null)
             {
                 return HttpNotFound();
             }
-            return View(medico);
+            return View(medicos);
         }
 
         // POST: Medicos/Delete/5
@@ -120,8 +109,8 @@ namespace MedicApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Medico medico = db.Medicos.Find(id);
-            db.Medicos.Remove(medico);
+            Medicos medicos = db.Medicos.Find(id);
+            db.Medicos.Remove(medicos);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
