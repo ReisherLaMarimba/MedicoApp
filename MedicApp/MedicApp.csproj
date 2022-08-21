@@ -191,10 +191,6 @@
     <Compile Include="Migrations\202208200034284_InitialCreate2.designer.cs">
       <DependentUpon>202208200034284_InitialCreate2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202208200037361_InitialCreate3.cs" />
-    <Compile Include="Migrations\202208200037361_InitialCreate3.designer.cs">
-      <DependentUpon>202208200037361_InitialCreate3.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -328,9 +324,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202208200034284_InitialCreate2.resx">
       <DependentUpon>202208200034284_InitialCreate2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202208200037361_InitialCreate3.resx">
-      <DependentUpon>202208200037361_InitialCreate3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

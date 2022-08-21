@@ -8,10 +8,14 @@ namespace MedicApp.Controllers
 {
     public class HomeController : Controller
     {
+        private MedicodbEntities db = new MedicodbEntities();
         public ActionResult Index()
         {
+            ViewBag.cuenta = db.Medicos.Count();
             return View();
         }
+
+       
 
         public ActionResult About()
         {

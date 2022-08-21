@@ -17,8 +17,11 @@ namespace MedicApp.Controllers
         // GET: Medicos
         public ActionResult Index()
         {
+
             return View(db.Medicos.ToList());
         }
+
+        
 
         // GET: Medicos/Details/5
         public ActionResult Details(int? id)
