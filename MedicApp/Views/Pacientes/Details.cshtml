@@ -1,0 +1,67 @@
+﻿@model MedicApp.Paciente
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Paciente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seguro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seguro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_entrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_entrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_salida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_salida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Caso_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Caso_id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

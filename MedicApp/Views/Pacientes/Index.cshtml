@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MedicApp.Medico>
+﻿@model IEnumerable<MedicApp.Paciente>
 
 @{
     ViewBag.Title = "Index";
@@ -16,22 +16,16 @@
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Apellido)
+            @Html.DisplayNameFor(model => model.Cedula)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Especialidad)
+            @Html.DisplayNameFor(model => model.Seguro)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Paciente_actual)
+            @Html.DisplayNameFor(model => model.Fecha_entrada)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.id_role)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.hora_entrada)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.hora_salida)
+            @Html.DisplayNameFor(model => model.Fecha_salida)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Caso_id)
@@ -45,22 +39,16 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Apellido)
+            @Html.DisplayFor(modelItem => item.Cedula)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Especialidad)
+            @Html.DisplayFor(modelItem => item.Seguro)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Paciente_actual)
+            @Html.DisplayFor(modelItem => item.Fecha_entrada)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.id_role)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.hora_entrada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.hora_salida)
+            @Html.DisplayFor(modelItem => item.Fecha_salida)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Caso_id)

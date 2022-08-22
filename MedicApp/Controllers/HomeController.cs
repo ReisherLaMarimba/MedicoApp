@@ -8,10 +8,16 @@ namespace MedicApp.Controllers
 {
     public class HomeController : Controller
     {
-        private MedicodbEntities db = new MedicodbEntities();
+      private HospitalEntities db = new HospitalEntities();
         public ActionResult Index()
         {
             ViewBag.cuenta = db.Medicos.Count();
+        ViewBag.pacientes = db.Pacientes.Count();
+
+        var cuentacasos = db.Casos.Where(x => x.Medico.Caso_id == x.Id).ToList();
+        ViewBag.caso = cuentacasos.Count;
+
+
             return View();
         }
 

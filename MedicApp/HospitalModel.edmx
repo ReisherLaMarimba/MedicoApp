@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HospitalModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Casos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Paciente_Id" Type="int" Nullable="false" />
+          <Property Name="Doctor_Id" Type="int" Nullable="false" />
+          <Property Name="Fecha_entrada" Type="datetime" Nullable="false" />
+          <Property Name="Fecha_salida" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medicos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Especialidad" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Paciente_actual" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="id_role" Type="int" Nullable="false" />
+          <Property Name="hora_entrada" Type="datetime" Nullable="false" />
+          <Property Name="hora_salida" Type="datetime" Nullable="false" />
+          <Property Name="Caso_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Pacientes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Cedula" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="Seguro" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Fecha_entrada" Type="datetime" Nullable="false" />
+          <Property Name="Fecha_salida" Type="datetime" Nullable="false" />
+          <Property Name="Caso_id" Type="int" />
+        </EntityType>
+        <Association Name="FK_dbo_Casos_dbo_Pacientes_Paciente_Id">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Casos" Type="Self.Casos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Casos">
+              <PropertyRef Name="Paciente_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Casos_Medicos_Doctor_Id">
+          <End Role="Medicos" Type="Self.Medicos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Casos" Type="Self.Casos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Casos">
+              <PropertyRef Name="Doctor_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HospitalModelsStoreContainer">
+          <EntitySet Name="Casos" EntityType="Self.Casos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medicos" EntityType="Self.Medicos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacientes" EntityType="Self.Pacientes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Casos_dbo_Pacientes_Paciente_Id" Association="Self.FK_dbo_Casos_dbo_Pacientes_Paciente_Id">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Casos" EntitySet="Casos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Casos_Medicos_Doctor_Id" Association="Self.FK_dbo_Casos_Medicos_Doctor_Id">
+            <End Role="Medicos" EntitySet="Medicos" />
+            <End Role="Casos" EntitySet="Casos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HospitalModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Caso">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Paciente_Id" Type="Int32" Nullable="false" />
+          <Property Name="Doctor_Id" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_entrada" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fecha_salida" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_dbo_Casos_dbo_Pacientes_Paciente_Id" FromRole="Casos" ToRole="Pacientes" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_dbo_Casos_Medicos_Doctor_Id" FromRole="Casos" ToRole="Medicos" />
+        </EntityType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Paciente_actual" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_role" Type="Int32" Nullable="false" />
+          <Property Name="hora_entrada" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hora_salida" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Caso_id" Type="Int32" />
+          <NavigationProperty Name="Casos" Relationship="Self.FK_dbo_Casos_Medicos_Doctor_Id" FromRole="Medicos" ToRole="Casos" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cedula" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Seguro" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fecha_entrada" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fecha_salida" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Caso_id" Type="Int32" />
+          <NavigationProperty Name="Casos" Relationship="Self.FK_dbo_Casos_dbo_Pacientes_Paciente_Id" FromRole="Pacientes" ToRole="Casos" />
+        </EntityType>
+        <Association Name="FK_dbo_Casos_dbo_Pacientes_Paciente_Id">
+          <End Role="Pacientes" Type="Self.Paciente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Casos" Type="Self.Caso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Casos">
+              <PropertyRef Name="Paciente_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Casos_Medicos_Doctor_Id">
+          <End Role="Medicos" Type="Self.Medico" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Casos" Type="Self.Caso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Casos">
+              <PropertyRef Name="Doctor_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HospitalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Casos" EntityType="Self.Caso" />
+          <EntitySet Name="Medicos" EntityType="Self.Medico" />
+          <EntitySet Name="Pacientes" EntityType="Self.Paciente" />
+          <AssociationSet Name="FK_dbo_Casos_dbo_Pacientes_Paciente_Id" Association="Self.FK_dbo_Casos_dbo_Pacientes_Paciente_Id">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Casos" EntitySet="Casos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Casos_Medicos_Doctor_Id" Association="Self.FK_dbo_Casos_Medicos_Doctor_Id">
+            <End Role="Medicos" EntitySet="Medicos" />
+            <End Role="Casos" EntitySet="Casos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HospitalModelsStoreContainer" CdmEntityContainer="HospitalEntities">
+          <EntitySetMapping Name="Casos">
+            <EntityTypeMapping TypeName="HospitalModels.Caso">
+              <MappingFragment StoreEntitySet="Casos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Paciente_Id" ColumnName="Paciente_Id" />
+                <ScalarProperty Name="Doctor_Id" ColumnName="Doctor_Id" />
+                <ScalarProperty Name="Fecha_entrada" ColumnName="Fecha_entrada" />
+                <ScalarProperty Name="Fecha_salida" ColumnName="Fecha_salida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicos">
+            <EntityTypeMapping TypeName="HospitalModels.Medico">
+              <MappingFragment StoreEntitySet="Medicos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+                <ScalarProperty Name="Paciente_actual" ColumnName="Paciente_actual" />
+                <ScalarProperty Name="id_role" ColumnName="id_role" />
+                <ScalarProperty Name="hora_entrada" ColumnName="hora_entrada" />
+                <ScalarProperty Name="hora_salida" ColumnName="hora_salida" />
+                <ScalarProperty Name="Caso_id" ColumnName="Caso_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacientes">
+            <EntityTypeMapping TypeName="HospitalModels.Paciente">
+              <MappingFragment StoreEntitySet="Pacientes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Seguro" ColumnName="Seguro" />
+                <ScalarProperty Name="Fecha_entrada" ColumnName="Fecha_entrada" />
+                <ScalarProperty Name="Fecha_salida" ColumnName="Fecha_salida" />
+                <ScalarProperty Name="Caso_id" ColumnName="Caso_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

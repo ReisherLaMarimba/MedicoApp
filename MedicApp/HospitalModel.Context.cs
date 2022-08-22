@@ -13,10 +13,10 @@ namespace MedicApp
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MedicodbEntities : DbContext
+    public partial class HospitalEntities : DbContext
     {
-        public MedicodbEntities()
-            : base("name=MedicodbEntities")
+        public HospitalEntities()
+            : base("name=HospitalEntities")
         {
         }
     
@@ -25,6 +25,8 @@ namespace MedicApp
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Medicos> Medicos { get; set; }
+        public virtual DbSet<Caso> Casos { get; set; }
+        public virtual DbSet<Medico> Medicos { get; set; }
+        public virtual DbSet<Paciente> Pacientes { get; set; }
     }
 }

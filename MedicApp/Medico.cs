@@ -12,8 +12,14 @@ namespace MedicApp
     using System;
     using System.Collections.Generic;
     
-    public partial class Medicos
+    public partial class Medico
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Medico()
+        {
+            this.Casos = new HashSet<Caso>();
+        }
+    
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
@@ -22,5 +28,9 @@ namespace MedicApp
         public int id_role { get; set; }
         public System.DateTime hora_entrada { get; set; }
         public System.DateTime hora_salida { get; set; }
+        public Nullable<int> Caso_id { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Caso> Casos { get; set; }
     }
 }
