@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace MedicApp
 {
     using System;
@@ -28,10 +26,7 @@ namespace MedicApp
         public string Especialidad { get; set; }
         public string Paciente_actual { get; set; }
         public int id_role { get; set; }
-
-        [DataType(DataType.Date)]
         public System.DateTime hora_entrada { get; set; }
-        [DataType(DataType.Date)]
         public System.DateTime hora_salida { get; set; }
         public Nullable<int> Caso_id { get; set; }
     

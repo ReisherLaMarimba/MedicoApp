@@ -1,4 +1,4 @@
-﻿using System.Data.Entity.Migrations.Model;
+﻿    using System.Data.Entity.Migrations.Model;
 
 namespace MedicApp.Migrations
 {

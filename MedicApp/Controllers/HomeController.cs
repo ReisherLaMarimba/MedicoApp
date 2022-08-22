@@ -11,7 +11,7 @@ namespace MedicApp.Controllers
       private HospitalEntities db = new HospitalEntities();
         public ActionResult Index()
         {
-           ViewBag.cuenta = db.Medicos.Count();
+            ViewBag.cuenta = db.Medicos.Count();
         ViewBag.pacientes = db.Pacientes.Count();
 
         var cuentacasos = db.Casos.Where(x => x.Medico.Caso_id == x.Id).ToList();
@@ -25,16 +25,18 @@ namespace MedicApp.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Descripcion";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contacto.";
 
             return View();
         }
+
+
     }
 }

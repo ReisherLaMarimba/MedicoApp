@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace MedicApp
 {
     using System;
@@ -26,9 +24,7 @@ namespace MedicApp
         public string Nombre { get; set; }
         public string Cedula { get; set; }
         public string Seguro { get; set; }
-        [DataType(DataType.Date)]
         public System.DateTime Fecha_entrada { get; set; }
-        [DataType(DataType.Date)]
         public System.DateTime Fecha_salida { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
