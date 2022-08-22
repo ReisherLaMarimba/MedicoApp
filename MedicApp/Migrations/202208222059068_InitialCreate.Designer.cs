@@ -13,7 +13,7 @@ namespace MedicApp.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202208220634077_InitialCreate"; }
+            get { return "202208222059068_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

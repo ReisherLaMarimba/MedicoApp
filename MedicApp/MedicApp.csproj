@@ -199,13 +199,13 @@
     <Compile Include="Medico.cs">
       <DependentUpon>HospitalModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202208220634077_InitialCreate.cs" />
-    <Compile Include="Migrations\202208220634077_InitialCreate.designer.cs">
-      <DependentUpon>202208220634077_InitialCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202208221256137_Hospital.cs" />
     <Compile Include="Migrations\202208221256137_Hospital.designer.cs">
       <DependentUpon>202208221256137_Hospital.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208222059068_InitialCreate.cs" />
+    <Compile Include="Migrations\202208222059068_InitialCreate.designer.cs">
+      <DependentUpon>202208222059068_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -331,11 +331,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202208220634077_InitialCreate.resx">
-      <DependentUpon>202208220634077_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202208221256137_Hospital.resx">
       <DependentUpon>202208221256137_Hospital.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208222059068_InitialCreate.resx">
+      <DependentUpon>202208222059068_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
