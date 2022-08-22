@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HospitalModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="HospitalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Casos">
           <Key>
             <PropertyRef Name="Id" />
@@ -39,7 +39,6 @@
           <Property Name="Seguro" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Fecha_entrada" Type="datetime" Nullable="false" />
           <Property Name="Fecha_salida" Type="datetime" Nullable="false" />
-          <Property Name="Caso_id" Type="int" />
         </EntityType>
         <Association Name="FK_dbo_Casos_dbo_Pacientes_Paciente_Id">
           <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="1">
@@ -69,7 +68,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HospitalModelsStoreContainer">
+        <Association Name="FK_Medicos_dbo_Casos_Caso_id">
+          <End Role="Casos" Type="Self.Casos" Multiplicity="0..1" />
+          <End Role="Medicos" Type="Self.Medicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Casos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medicos">
+              <PropertyRef Name="Caso_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HospitalModelStoreContainer">
           <EntitySet Name="Casos" EntityType="Self.Casos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medicos" EntityType="Self.Medicos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pacientes" EntityType="Self.Pacientes" Schema="dbo" store:Type="Tables" />
@@ -81,12 +92,16 @@
             <End Role="Medicos" EntitySet="Medicos" />
             <End Role="Casos" EntitySet="Casos" />
           </AssociationSet>
+          <AssociationSet Name="FK_Medicos_dbo_Casos_Caso_id" Association="Self.FK_Medicos_dbo_Casos_Caso_id">
+            <End Role="Casos" EntitySet="Casos" />
+            <End Role="Medicos" EntitySet="Medicos" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="HospitalModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="HospitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Caso">
           <Key>
             <PropertyRef Name="Id" />
@@ -98,6 +113,7 @@
           <Property Name="Fecha_salida" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Paciente" Relationship="Self.FK_dbo_Casos_dbo_Pacientes_Paciente_Id" FromRole="Casos" ToRole="Pacientes" />
           <NavigationProperty Name="Medico" Relationship="Self.FK_dbo_Casos_Medicos_Doctor_Id" FromRole="Casos" ToRole="Medicos" />
+          <NavigationProperty Name="Medicos" Relationship="Self.FK_Medicos_dbo_Casos_Caso_id" FromRole="Casos" ToRole="Medicos" />
         </EntityType>
         <EntityType Name="Medico">
           <Key>
@@ -113,6 +129,7 @@
           <Property Name="hora_salida" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Caso_id" Type="Int32" />
           <NavigationProperty Name="Casos" Relationship="Self.FK_dbo_Casos_Medicos_Doctor_Id" FromRole="Medicos" ToRole="Casos" />
+          <NavigationProperty Name="Caso" Relationship="Self.FK_Medicos_dbo_Casos_Caso_id" FromRole="Medicos" ToRole="Casos" />
         </EntityType>
         <EntityType Name="Paciente">
           <Key>
@@ -124,7 +141,6 @@
           <Property Name="Seguro" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Fecha_entrada" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Fecha_salida" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Caso_id" Type="Int32" />
           <NavigationProperty Name="Casos" Relationship="Self.FK_dbo_Casos_dbo_Pacientes_Paciente_Id" FromRole="Pacientes" ToRole="Casos" />
         </EntityType>
         <Association Name="FK_dbo_Casos_dbo_Pacientes_Paciente_Id">
@@ -155,6 +171,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Medicos_dbo_Casos_Caso_id">
+          <End Role="Casos" Type="Self.Caso" Multiplicity="0..1" />
+          <End Role="Medicos" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Casos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medicos">
+              <PropertyRef Name="Caso_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="HospitalEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Casos" EntityType="Self.Caso" />
           <EntitySet Name="Medicos" EntityType="Self.Medico" />
@@ -167,15 +195,19 @@
             <End Role="Medicos" EntitySet="Medicos" />
             <End Role="Casos" EntitySet="Casos" />
           </AssociationSet>
+          <AssociationSet Name="FK_Medicos_dbo_Casos_Caso_id" Association="Self.FK_Medicos_dbo_Casos_Caso_id">
+            <End Role="Casos" EntitySet="Casos" />
+            <End Role="Medicos" EntitySet="Medicos" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HospitalModelsStoreContainer" CdmEntityContainer="HospitalEntities">
+        <EntityContainerMapping StorageEntityContainer="HospitalModelStoreContainer" CdmEntityContainer="HospitalEntities">
           <EntitySetMapping Name="Casos">
-            <EntityTypeMapping TypeName="HospitalModels.Caso">
+            <EntityTypeMapping TypeName="HospitalModel.Caso">
               <MappingFragment StoreEntitySet="Casos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Paciente_Id" ColumnName="Paciente_Id" />
@@ -186,7 +218,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Medicos">
-            <EntityTypeMapping TypeName="HospitalModels.Medico">
+            <EntityTypeMapping TypeName="HospitalModel.Medico">
               <MappingFragment StoreEntitySet="Medicos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -201,7 +233,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Pacientes">
-            <EntityTypeMapping TypeName="HospitalModels.Paciente">
+            <EntityTypeMapping TypeName="HospitalModel.Paciente">
               <MappingFragment StoreEntitySet="Pacientes">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -209,7 +241,6 @@
                 <ScalarProperty Name="Seguro" ColumnName="Seguro" />
                 <ScalarProperty Name="Fecha_entrada" ColumnName="Fecha_entrada" />
                 <ScalarProperty Name="Fecha_salida" ColumnName="Fecha_salida" />
-                <ScalarProperty Name="Caso_id" ColumnName="Caso_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

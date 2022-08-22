@@ -170,7 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Caso.cs">
-      <DependentUpon>HospitalModel.tt</DependentUpon>
+      <DependentUpon>HospitalModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CasoesController.cs" />
@@ -181,23 +181,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HospitalModel.Context.cs">
+    <Compile Include="HospitalModels.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HospitalModel.Context.tt</DependentUpon>
+      <DependentUpon>HospitalModels.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="HospitalModel.cs">
+    <Compile Include="HospitalModels.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HospitalModel.tt</DependentUpon>
+      <DependentUpon>HospitalModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="HospitalModel.Designer.cs">
+    <Compile Include="HospitalModels.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HospitalModel.edmx</DependentUpon>
+      <DependentUpon>HospitalModels.edmx</DependentUpon>
     </Compile>
     <Compile Include="Medico.cs">
-      <DependentUpon>HospitalModel.tt</DependentUpon>
+      <DependentUpon>HospitalModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202208220634077_InitialCreate.cs" />
     <Compile Include="Migrations\202208220634077_InitialCreate.designer.cs">
@@ -212,7 +212,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Paciente.cs">
-      <DependentUpon>HospitalModel.tt</DependentUpon>
+      <DependentUpon>HospitalModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -226,25 +226,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="HospitalModel.Context.tt">
+    <Content Include="HospitalModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HospitalModel.edmx</DependentUpon>
-      <LastGenOutput>HospitalModel.Context.cs</LastGenOutput>
+      <DependentUpon>HospitalModels.edmx</DependentUpon>
+      <LastGenOutput>HospitalModels.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="HospitalModel.tt">
+    <Content Include="HospitalModels.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HospitalModel.edmx</DependentUpon>
-      <LastGenOutput>HospitalModel.cs</LastGenOutput>
+      <DependentUpon>HospitalModels.edmx</DependentUpon>
+      <LastGenOutput>HospitalModels.cs</LastGenOutput>
     </Content>
     <Content Include="img1\Medic app.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="HospitalModel.edmx">
+    <EntityDeploy Include="HospitalModels.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HospitalModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>HospitalModels.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="HospitalModel.edmx.diagram">
-      <DependentUpon>HospitalModel.edmx</DependentUpon>
+    <Content Include="HospitalModels.edmx.diagram">
+      <DependentUpon>HospitalModels.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -295,11 +295,6 @@
     <Content Include="Views\Shared\_MainSidebar.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_SideControl.cshtml" />
-    <Content Include="Views\Medicos\Create.cshtml" />
-    <Content Include="Views\Medicos\Delete.cshtml" />
-    <Content Include="Views\Medicos\Details.cshtml" />
-    <Content Include="Views\Medicos\Edit.cshtml" />
-    <Content Include="Views\Medicos\Index.cshtml" />
     <Content Include="Views\Casoes\Create.cshtml" />
     <Content Include="Views\Casoes\Delete.cshtml" />
     <Content Include="Views\Casoes\Details.cshtml" />
@@ -310,6 +305,11 @@
     <Content Include="Views\Pacientes\Details.cshtml" />
     <Content Include="Views\Pacientes\Edit.cshtml" />
     <Content Include="Views\Pacientes\Index.cshtml" />
+    <Content Include="Views\Medicos\Create.cshtml" />
+    <Content Include="Views\Medicos\Delete.cshtml" />
+    <Content Include="Views\Medicos\Details.cshtml" />
+    <Content Include="Views\Medicos\Edit.cshtml" />
+    <Content Include="Views\Medicos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

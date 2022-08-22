@@ -24,7 +24,7 @@ namespace MedicApp.Migrations
                 .ForeignKey("dbo.Pacientes", t => t.Paciente_Id, cascadeDelete: true)
                 .Index(t => t.Doctor_Id)
                 .Index(t => t.Paciente_Id);
-               
+
 
 
             CreateTable(
@@ -37,11 +37,10 @@ namespace MedicApp.Migrations
                         Seguro = c.String(nullable: false, maxLength: 128),
                         Fecha_entrada = c.DateTime(nullable: false),
                         Fecha_salida = c.DateTime(nullable: false),
-                        Caso_id = c.Int(nullable: true)
                     })
-                .PrimaryKey(t => new { t.Id, })
-                .ForeignKey("dbo.Casos", t => t.Caso_id, cascadeDelete: true);
-
+                .PrimaryKey(t => new { t.Id });
+               
+        
             CreateTable(
                     "Medicos",
                     c => new
@@ -57,7 +56,7 @@ namespace MedicApp.Migrations
                         Caso_id = c.Int(nullable: true)
                     })
                 .PrimaryKey(t => new { t.Id })
-                .ForeignKey("dbo.Casos", t => t.Caso_id, cascadeDelete: true)
+                .ForeignKey("dbo.Casos", t => t.Caso_id)
                 .Index(t => t.Caso_id);
 
 
@@ -68,9 +67,7 @@ namespace MedicApp.Migrations
 
         public override void Down()
         {
-            DropTable("dbo.Casos");
-            DropTable("dbo.Pacientes");
-            DropTable("Medicos");
+         
         }
     }
 }

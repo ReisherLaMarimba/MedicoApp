@@ -8,12 +8,12 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Añadir uno", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            Nombre
+            @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Apellido)
@@ -34,7 +34,7 @@
             @Html.DisplayNameFor(model => model.hora_salida)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Caso_id)
+            @Html.DisplayNameFor(model => model.Caso.Id)
         </th>
         <th></th>
     </tr>
@@ -63,7 +63,7 @@
             @Html.DisplayFor(modelItem => item.hora_salida)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Caso_id)
+            @Html.DisplayFor(modelItem => item.Caso.Id)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

@@ -8,7 +8,6 @@
 //------------------------------------------------------------------------------
 
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
 
 namespace MedicApp
 {
@@ -17,23 +16,23 @@ namespace MedicApp
     
     public partial class Caso
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Caso()
+        {
+            this.Medicos = new HashSet<Medico>();
+        }
+    
         public int Id { get; set; }
         public int Paciente_Id { get; set; }
-
         public int Doctor_Id { get; set; }
-
-
-
         [DataType(DataType.Date)]
         public System.DateTime Fecha_entrada { get; set; }
-
         [DataType(DataType.Date)]
         public System.DateTime Fecha_salida { get; set; }
-        
-
-
-
+    
         public virtual Paciente Paciente { get; set; }
         public virtual Medico Medico { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Medico> Medicos { get; set; }
     }
 }

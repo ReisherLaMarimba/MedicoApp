@@ -46,7 +46,7 @@ namespace MedicApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Cedula,Seguro,Fecha_entrada,Fecha_salida,Caso_id")] Paciente paciente)
+        public ActionResult Create([Bind(Include = "Id,Nombre,Cedula,Seguro,Fecha_entrada,Fecha_salida")] Paciente paciente)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace MedicApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Cedula,Seguro,Fecha_entrada,Fecha_salida,Caso_id")] Paciente paciente)
+        public ActionResult Edit([Bind(Include = "Id,Nombre,Cedula,Seguro,Fecha_entrada,Fecha_salida")] Paciente paciente)
         {
             if (ModelState.IsValid)
             {

@@ -26,18 +26,10 @@ namespace MedicApp
         public string Nombre { get; set; }
         public string Cedula { get; set; }
         public string Seguro { get; set; }
-
         [DataType(DataType.Date)]
-
         public System.DateTime Fecha_entrada { get; set; }
-
-
         [DataType(DataType.Date)]
-
         public System.DateTime Fecha_salida { get; set; }
-
-       
-        public Nullable<int> Caso_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Caso> Casos { get; set; }

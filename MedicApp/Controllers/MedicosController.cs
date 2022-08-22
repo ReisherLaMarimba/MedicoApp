@@ -17,7 +17,8 @@ namespace MedicApp.Controllers
         // GET: Medicos
         public ActionResult Index()
         {
-            return View(db.Medicos.ToList());
+            var medicos = db.Medicos.Include(m => m.Caso);
+            return View(medicos.ToList());
         }
 
         // GET: Medicos/Details/5
@@ -38,6 +39,7 @@ namespace MedicApp.Controllers
         // GET: Medicos/Create
         public ActionResult Create()
         {
+            ViewBag.Caso_id = new SelectList(db.Casos, "Id", "Id");
             return View();
         }
 
@@ -55,6 +57,7 @@ namespace MedicApp.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Caso_id = new SelectList(db.Casos, "Id", "Id", medico.Caso_id);
             return View(medico);
         }
 
@@ -70,6 +73,7 @@ namespace MedicApp.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Caso_id = new SelectList(db.Casos, "Id", "Id", medico.Caso_id);
             return View(medico);
         }
 
@@ -86,6 +90,7 @@ namespace MedicApp.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Caso_id = new SelectList(db.Casos, "Id", "Id", medico.Caso_id);
             return View(medico);
         }
 

@@ -11,7 +11,7 @@ namespace MedicApp.Controllers
       private HospitalEntities db = new HospitalEntities();
         public ActionResult Index()
         {
-            ViewBag.cuenta = db.Medicos.Count();
+           ViewBag.cuenta = db.Medicos.Count();
         ViewBag.pacientes = db.Pacientes.Count();
 
         var cuentacasos = db.Casos.Where(x => x.Medico.Caso_id == x.Id).ToList();
