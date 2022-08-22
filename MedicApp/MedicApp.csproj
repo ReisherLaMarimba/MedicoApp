@@ -179,17 +179,9 @@
     <Compile Include="Medicos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202208192324476_InitialCreate.cs" />
-    <Compile Include="Migrations\202208192324476_InitialCreate.designer.cs">
-      <DependentUpon>202208192324476_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202208192331045_InitialCreate1.cs" />
-    <Compile Include="Migrations\202208192331045_InitialCreate1.designer.cs">
-      <DependentUpon>202208192331045_InitialCreate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202208200034284_InitialCreate2.cs" />
-    <Compile Include="Migrations\202208200034284_InitialCreate2.designer.cs">
-      <DependentUpon>202208200034284_InitialCreate2.cs</DependentUpon>
+    <Compile Include="Migrations\202208220634077_InitialCreate.cs" />
+    <Compile Include="Migrations\202208220634077_InitialCreate.designer.cs">
+      <DependentUpon>202208220634077_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.Context.cs">
@@ -317,14 +309,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202208192324476_InitialCreate.resx">
-      <DependentUpon>202208192324476_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202208192331045_InitialCreate1.resx">
-      <DependentUpon>202208192331045_InitialCreate1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202208200034284_InitialCreate2.resx">
-      <DependentUpon>202208200034284_InitialCreate2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202208220634077_InitialCreate.resx">
+      <DependentUpon>202208220634077_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
