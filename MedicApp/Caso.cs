@@ -7,6 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
+
 namespace MedicApp
 {
     using System;
@@ -16,10 +19,20 @@ namespace MedicApp
     {
         public int Id { get; set; }
         public int Paciente_Id { get; set; }
+
         public int Doctor_Id { get; set; }
+
+
+
+        [DataType(DataType.Date)]
         public System.DateTime Fecha_entrada { get; set; }
+
+        [DataType(DataType.Date)]
         public System.DateTime Fecha_salida { get; set; }
-    
+        
+
+
+
         public virtual Paciente Paciente { get; set; }
         public virtual Medico Medico { get; set; }
     }

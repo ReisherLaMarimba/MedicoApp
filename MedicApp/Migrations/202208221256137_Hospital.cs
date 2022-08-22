@@ -57,7 +57,8 @@ namespace MedicApp.Migrations
                         Caso_id = c.Int(nullable: true)
                     })
                 .PrimaryKey(t => new { t.Id })
-            .ForeignKey("dbo.Casos", t => t.Caso_id, cascadeDelete: true);
+                .ForeignKey("dbo.Casos", t => t.Caso_id, cascadeDelete: true)
+                .Index(t => t.Caso_id);
 
 
 

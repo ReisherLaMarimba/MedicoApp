@@ -55,12 +55,12 @@ namespace MedicApp.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                message == ManageMessageId.ChangePasswordSuccess ? "Tu contraseña cambio correctamente."
+                : message == ManageMessageId.SetPasswordSuccess ? "Contraseña aplicada con exito."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.Error ? "Error encontrado al recargar."
+                : message == ManageMessageId.AddPhoneSuccess ? "Numero de telefono aceptado"
+                : message == ManageMessageId.RemovePhoneSuccess ? "Numero de telefono removido."
                 : "";
 
             var userId = User.Identity.GetUserId();

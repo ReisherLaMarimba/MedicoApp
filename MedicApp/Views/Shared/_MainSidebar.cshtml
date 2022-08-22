@@ -55,15 +55,21 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="@Url.Action("Index","Medicos")" class="nav-link active">
+                            <a href="@Url.Action("Index","Medicos")" class="nav-link  @(ViewContext.RouteData.Values["Action"].ToString()=="Medicos"?"active":"")">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Listado de Doctores</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="@Url.Action("Index","Casoes")" class="nav-link @(ViewContext.RouteData.Values["Action"].ToString()=="Casoes"?"active":"")">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Inactive Page</p>
+                                <p>Casos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Pacientes")" class="nav-link @(ViewContext.RouteData.Values["Action"].ToString()=="Pacientes"?"active":"")">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Pacientes</p>
                             </a>
                         </li>
                     </ul>
