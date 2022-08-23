@@ -37,6 +37,7 @@ namespace MedicApp.Migrations
                         Seguro = c.String(nullable: false, maxLength: 128),
                         Fecha_entrada = c.DateTime(nullable: false),
                         Fecha_salida = c.DateTime(nullable: false),
+                        
                     })
                 .PrimaryKey(t => new { t.Id });
                
